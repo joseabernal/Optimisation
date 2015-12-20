@@ -1,0 +1,21 @@
+function f = GoldsteinPrice()
+    A1 = 2*[4 -6; -6 9];
+    b1 = [0; 0];
+    c1 = 0;
+    f1 = CuadraticFunction(A1, b1, c1);
+    A2 = 2*[12 -18; -18 27];
+    b2 = -[-32; 48];
+    c2 = 18;
+    f2 = CuadraticFunction(A2, b2, c2);
+    c3 = 30;
+    A4 = 2*[1 1; 1 1];
+    b4 = -[2; 2];
+    c4 = 1;
+    f4 = CuadraticFunction(A4, b4, c4);
+    A5 = 2*[3 3; 3 3];
+    b5 = -[-14; -14];
+    c5 = 19;
+    f5 = CuadraticFunction(A5, b5, c5);
+    c6 = 1;
+    f = @(x) (c6 + f4(x)*f5(x))*(c3 + f1(x) * f2(x));
+end
