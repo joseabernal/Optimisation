@@ -4,7 +4,7 @@ function [xmin, iter] = NewtonMethod(f, dfdx, d2fdx2, x, tol)
     while repeat
         xCurrent = x - dfdx(f,x)/d2fdx2(f,x);
         iter = iter + 1;
-        if (abs(xCurrent - x) <= tol)
+        if (abs(xCurrent - x) <= tol) %|| iter == 10)
             repeat = false;
         end
         x = xCurrent;

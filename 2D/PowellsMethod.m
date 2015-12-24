@@ -14,7 +14,7 @@ function [xmin, iter] = PowellsMethod(f, p)
             pCurrent = p + t .* d;
             DisplayLine(p(1), p(2), pCurrent(1), pCurrent(2));
             DisplayPoint(pCurrent);
-            pause(0)
+            %pause(0)
             p = pCurrent;
             iter = iter + 1;
             i = i + 1;
@@ -23,6 +23,12 @@ function [xmin, iter] = PowellsMethod(f, p)
         display([pCurrent p0 pCurrent - p0])
         U(:, 2) = pCurrent - p0;
         U(:, 2) = U(:, 2) / norm(U(:, 2));
+        
+        if (norm(p0 - pCurrent) <= tol)
+            p = pCurrent;
+            repeat = false;
+            continue;
+        end
         
         d = U(:, 2);
         l = Line(f, pCurrent, d);

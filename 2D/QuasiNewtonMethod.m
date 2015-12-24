@@ -12,7 +12,7 @@ function [xmin, iter] = QuasiNewtonMethod(f, p)
         pCurrent = p + t .* h;
         DisplayLine(p(1), p(2), pCurrent(1), pCurrent(2));
         DisplayPoint(pCurrent);
-        if (norm(p - pCurrent) <= tol || norm(Gradient(f, pCurrent)) == 0)
+        if (norm(p - pCurrent) <= tol || norm(Gradient(f, pCurrent)) <= tol)
             repeat = false;
         end
         df = Gradient(f, pCurrent) - Gradient(f, p);

@@ -1,3 +1,3 @@
 function [y] = f(x)
-    y = -exp(-x.^2) + exp(-(x+1).^2);
+    y = @(x) -exp(-x.^2) + exp(-(x+1).^2);
 end

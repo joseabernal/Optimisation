@@ -1,6 +1,6 @@
 function [xmin, iter] = GoldenSearch(f, a, b, c, tol)
     iter = 0;
-    assert(a < b && b < c);
+    assert(a <= b && b <= c);
     assert(f(a) >= f(b) && f(b) <= f(c));
     while abs(c - a) > tol
         iter = iter + 1;
