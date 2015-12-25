@@ -10,7 +10,8 @@ function [xmin, iter] = PowellsMethod(f, p)
         while i <= 2
             d = U(:, i);
             l = Line(f, p, d);
-            t = NewtonMethod(l, @dfdx, @d2fdx2, 0, tol);
+            [x1, x2, x3] = EstablishBrackets(l, 0, 1);
+            t = GoldenSearch(l, x1, x2, x3, tol);
             pCurrent = p + t .* d;
             DisplayLine(p(1), p(2), pCurrent(1), pCurrent(2));
             DisplayPoint(pCurrent);
